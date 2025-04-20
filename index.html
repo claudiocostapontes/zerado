@@ -1,76 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Maçonaria Moderna</title>
-  <h1>Loja Guardiões do Templo Nº 3544</h1>
-  <style>
-    body {
-        font-family: sans-serif;
-        margin: 20px;
-        padding: 20px;
-        border: 2px solid black; /* Adiciona a borda vermelha como na imagem */
-        background-color: #f0f0f0; /* Adiciona um fundo claro como na imagem */
-    }
-    .container {
-        display: flex;
-        gap: 20px; /* Espaço entre o texto e a imagem */
-        align-items: start; /* Alinha o texto e a imagem no topo */
-    }
-    .info {
-        line-height: 1.6;
-    }
-    .image-container {
-        border: 1px solid black; /* Adiciona uma borda à imagem */
-    }
-    .image-container img {
-        max-width: 200px; /* Define uma largura máxima para a imagem */
-        height: auto;
-        display: block; /* Remove espaço extra abaixo da imagem */
-    }
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-</style>
-  </head>
+    <meta charset="UTF-8">
+    <title>Maçonaria Moderna</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            padding: 20px;
+            /* Define a imagem como fundo do body, cobrindo toda a página */
+            background-image: url('assets/casa.jpg'); /* Caminho ajustado para a pasta assets */
+            background-size: cover; /* Faz a imagem cobrir toda a área */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            background-position: center; /* Centraliza a imagem */
+            min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 250px; /* Aumenta a margem inferior para aumentar a distância do footer */
+            background-color: transparent; /* Fundo transparente para mostrar a imagem de fundo */
+            padding: 10px;
+            color: black; /* Garante que o texto seja preto */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra preta para maior contraste */
+        }
+
+        .main-header {
+            display: flex; /* Para alinhar a logo e a navegação horizontalmente */
+            align-items: center; /* Alinhar verticalmente os itens do header */
+            justify-content: space-between; /* Espaçar a logo e a navegação */
+            padding: 10px 20px; /* Adiciona um pouco de espaço interno */
+            background-color: transparent; /* Fundo transparente para mostrar a imagem de fundo */
+            border: none; /* Remove a borda */
+            margin-top: 20px; /* Espaço acima do header para descê-lo */
+        }
+
+        .logo-container img {
+            width: 150px; /* Aumenta a largura do logo */
+            /* Remove max-height para permitir que a altura se ajuste automaticamente à proporção */
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5)); /* Mantém a sombra para contraste */
+        }
+
+        nav ul {
+            list-style: none; /* Remove os marcadores de lista */
+            padding: 0;
+            margin: 0;
+            display: flex; /* Alinha os itens da lista horizontalmente */
+        }
+
+        nav ul li {
+            margin-left: 20px; /* Espaço entre os itens da navbar */
+        }
+
+        nav ul li:first-child {
+            margin-left: 0; /* Remove a margem do primeiro item */
+        }
+
+        nav ul li a {
+            text-decoration: none; /* Remove o sublinhado dos links */
+            color: black; /* Cor do texto para preto para maior contraste */
+            padding: 8px 12px; /* Espaçamento interno dos links */
+            border-radius: 5px; /* Bordas arredondadas (opcional) */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra preta para maior contraste */
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Fundo semitransparente ao passar o mouse */
+        }
+
+        /* Define o elemento pai do menu suspenso como referência para posicionamento. */
+        /* Garante que o conteúdo do menu (com position: absolute) seja posicionado em relação a este elemento. */
+        .dropdown {
+            position: relative;
+        }
+
+        /* Estiliza o botão que aciona o menu suspenso. */
+        /* Fundo transparente, texto azul, sem borda, com padding para espaço clicável, bordas arredondadas e cursor de ponteiro para indicar interatividade. */
+        .dropbtn {
+            background-color: transparent;
+            color: blue;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra preta para maior contraste */
+        }
+
+        /* Configura o contêiner do menu suspenso (inicialmente oculto). */
+        /* Usa position: absolute para posicionar em relação ao .dropdown, fundo azul, largura mínima, sombra para profundidade e z-index para sobrepor outros elementos. */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: blue;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Estiliza os links dentro do menu suspenso. */
+        /* Texto branco para contraste, padding para área clicável, sem sublinhado e display: block para ocupar toda a largura do contêiner. */
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Altera a cor de fundo dos links do menu suspenso ao passar o mouse. */
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        /* Exibe o menu suspenso quando o usuário passa o mouse sobre o elemento .dropdown. */
+        /* Altera o display do .dropdown-content de none para block, tornando-o visível. */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .intranet-search {
+            display: flex;
+            align-items: center;
+        }
+
+        footer {
+            background-color: transparent; /* Fundo transparente para mostrar a imagem de fundo */
+            padding: 10px 20px; /* Espaçamento interno */
+            text-align: center; /* Centralizar o conteúdo */
+            border: none; /* Mantém as bordas removidas */
+            margin-top: 50px; /* Aumenta a margem superior para aumentar a distância do h1 */
+        }
+
+        footer p {
+            margin: 5px 0; /* Espaçamento entre os parágrafos */
+            font-size: 10px; /* Tamanho da fonte preservado */
+            color: white; /* Cor do texto alterada para branco */
+            font-weight: bold; /* Adiciona negrito ao texto */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Sombra branca para maior contraste */
+        }
+
+        footer a {
+            text-decoration: none; /* Remove o sublinhado do link de email */
+            color: white; /* Cor do link alterada para branco */
+            font-weight: bold; /* Adiciona negrito ao texto */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Sombra branca para maior contraste */
+        }
+
+        footer a:hover {
+            color: white; /* Cor ao passar o mouse mantida como branca */
+            text-decoration: underline; /* Sublinhado ao passar o mouse */
+        }
+    </style>
+</head>
 <body>
-  <header class="main-header">
-    <div class="logo-container">
-      <img src="../assets/casa.jpg" alt="Casa">
-    </div>
-    <nav>
-      <ul class="menu">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="nossa-loja.html">Nossa Loja</a></li>
-        <li><a href="maconaria.html">Maçonaria</a></li>
-        <li><a href="contato.html">Contato</a></li>
-        <li class="dropdown">
-          <button class="dropbtn">Notícias e Publicações</button>
-          <div class="dropdown-content">
-            <a href="noticias.html">Notícias</a>
-            <a href="publicacoes.html">Publicações</a>
-          </div>
-        </li>
-        <li><a href="livro-de-visitas.html">Livro de Visitas</a></li>
-        <li><a href="calendario-eventos.html">Calendário de Eventos</a></li>
-        <li><a href="area-restrita.html">Área Restrita</a></li>
-        <li><a href="fale-conosco.html">Fale Conosco</a></li>
-        <li><a href="intranet.html">Intranet</a></li>
-      </ul>
-    </nav>
-    <div class="intranet-search">
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-      </div>
-    </div>
-  </header>
-
-  <main>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="/assets/logoguardioes.jpg" alt="Logo Guardiões">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="inicio.html">Início</a></li>
+                <li><a href="nossa-loja.html">Nossa Loja</a></li>
+                <li><a href="#">Maçonaria</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Livro de Visitas</a></li>
+                <li><a href="#">Calendário de Eventos</a></li>
+                <li><a href="#">Área Restrita</a></li>
+                <li><a href="#">Fale Conosco</a></li>
+            </ul>
+        </nav>
+        <div class="intranet-search">
+            <div class="search-bar">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <h1>Guardiões do Templo Nº 3544</h1>
+    <main>
     </main>
-
-  <footer>
+    <footer>
+        <p>Loja Maçonica Guardiões do Templo Nº 3544</p>
+        <p>QE 40 Área Especial Nº 6 Lote 01 Guará II</p>
+        <p>CNPJ: 19.246.642/0001-01</p>
     </footer>
 </body>
 </html>

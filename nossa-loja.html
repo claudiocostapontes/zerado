@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Maçonaria Moderna</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            padding: 20px;
+            /* Define a imagem como fundo do body, cobrindo toda a página */
+            background-image: url('assets/casa.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+        }
+
+        /* Estilo do cabeçalho principal */
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: transparent; /* Azul escuro semelhante ao da GLESP */
+            margin-top: 20px;
+        }
+
+        .logo-container img {
+            width: 150px; /* Largura ajustada anteriormente */
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* Altera para branco para contraste com o fundo azul escuro */
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Fundo semitransparente ao passar o mouse */
+        }
+
+        /* Estilo do menu suspenso */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: white; /* Altera para branco para contraste com o fundo azul escuro */
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: blue;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .intranet-search {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilo do banner */
+        .banner {
+            position: relative;
+            background-image: url('assets/casa.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay escuro para legibilidade */
+            z-index: 1;
+        }
+
+        .banner h2, .banner p, .banner .btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para legibilidade */
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner .btn {
+            background-color: #003087;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Estilo da seção de notícias */
+        main {
+            margin: 20px 0; /* Espaço acima e abaixo do main */
+        }
+
+        .news {
+            padding: 20px;
+        }
+
+        .news-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .news-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .news-card p {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .news-card .btn {
+            display: inline-block;
+            background-color: #003087;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Estilo do h1 (removido do body, já que o banner substitui sua função) */
+        h1 {
+            display: none; /* O h1 será substituído pelo banner */
+        }
+
+        /* Estilo do rodapé */
+        footer {
+            background-color: transparent; /* Azul escuro */
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        footer a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <!--<div class="logo-container">
+            <img src="/assets/compasso.png" alt="Compasso">
+        </div>-->       
+        <nav>
+            <!--<ul class="menu">
+                <li><a href="#">Nossa Loja</a></li>
+            </ul>-->
+        </nav>
+        <div class="intranet-search">
+            <div class="search-bar">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="banner">
+        <h2>Guardiões do Templo Nº 3544</h2>
+        <p>Trabalhando pela Ordem e Progresso</p>
+        <a href="#" class="btn">Saiba Mais</a>
+    </section>
+
+    <main>
+        <section class="news">
+            <h2>Notícias Recentes</h2>
+            <div class="news-card">
+                <img src="assets/gob.jpg" alt="GOB">
+                <h3>Alô Léo</h3>
+                <p>Descrição breve da notícia...</p>
+                <a href="#" class="btn">Leia Mais</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Loja Maçonica Guardiões do Templo Nº 3544</p>
+        <p>QE 40 Área Especial Nº 6 Lote 01 Guará II</p>
+        <p>CNPJ: 19.246.642/0001-01</p>
+    </footer>
+</body>
+</html>
