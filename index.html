@@ -18,7 +18,7 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 250px; /* Aumenta a margem inferior para aumentar a distância do footer */
+            margin-bottom: 450px; /* Aumenta a margem inferior para aumentar a distância do footer */
             background-color: transparent; /* Fundo transparente para mostrar a imagem de fundo */
             padding: 10px;
             color: white; /* Garante que o texto seja preto */
@@ -32,11 +32,11 @@
             padding: 10px 20px; /* Adiciona um pouco de espaço interno */
             background-color: transparent; /* Fundo transparente para mostrar a imagem de fundo */
             border: none; /* Remove a borda */
-            margin-top: 20px; /* Espaço acima do header para descê-lo */
+            
         }
-
+        
         .logo-container img {
-            width: 150px; /* Aumenta a largura do logo */
+            width: 140px; /* Aumenta a largura do logo */
             /* Remove max-height para permitir que a altura se ajuste automaticamente à proporção */
             filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5)); /* Mantém a sombra para contraste */
         }
@@ -57,12 +57,14 @@
         }
 
         nav ul li a {
-            text-decoration: none; /* Remove o sublinhado dos links */
-            color: white; /* Cor do texto para preto para maior contraste */
-            padding: 8px 12px; /* Espaçamento interno dos links */
-            border-radius: 5px; /* Bordas arredondadas (opcional) */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra preta para maior contraste */
-        }
+        text-decoration: none; /* Remove o sublinhado dos links */
+        color: white; /* Cor do texto para branco para maior contraste */
+        padding: 8px 12px; /* Espaçamento interno dos links */
+        border-radius: 5px; /* Bordas arredondadas (opcional) */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra preta para maior contraste */
+        line-height: 1; /* Ajusta a altura da linha para melhor alinhamento */
+        font-size: 16px; 
+}
 
         nav ul li a:hover {
             background-color: rgba(255, 255, 255, 0.3); /* Fundo semitransparente ao passar o mouse */
@@ -75,7 +77,8 @@
         }
 
         /* Estiliza o botão que aciona o menu suspenso. */
-        /* Fundo transparente, texto azul, sem borda, com padding para espaço clicável, bordas arredondadas e cursor de ponteiro para indicar interatividade. */
+        /* Fundo transparente, texto azul, sem borda, com padding para espaço clicável, 
+        bordas arredondadas e cursor de ponteiro para indicar interatividade. */
         .dropbtn {
             background-color: transparent;
             color: blue;
@@ -87,7 +90,8 @@
         }
 
         /* Configura o contêiner do menu suspenso (inicialmente oculto). */
-        /* Usa position: absolute para posicionar em relação ao .dropdown, fundo azul, largura mínima, sombra para profundidade e z-index para sobrepor outros elementos. */
+        /* Usa position: absolute para posicionar em relação ao .dropdown, fundo azul, largura mínima, 
+        sombra para profundidade e z-index para sobrepor outros elementos. */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -98,7 +102,8 @@
         }
 
         /* Estiliza os links dentro do menu suspenso. */
-        /* Texto branco para contraste, padding para área clicável, sem sublinhado e display: block para ocupar toda a largura do contêiner. */
+        /* Texto branco para contraste, padding para área clicável, sem sublinhado e display: 
+        block para ocupar toda a largura do contêiner. */
         .dropdown-content a {
             color: white;
             padding: 12px 16px;
@@ -108,7 +113,7 @@
 
         /* Altera a cor de fundo dos links do menu suspenso ao passar o mouse. */
         .dropdown-content a:hover {
-            background-color: #555;
+            background-color: #535252;
         }
 
         /* Exibe o menu suspenso quando o usuário passa o mouse sobre o elemento .dropdown. */
@@ -132,7 +137,7 @@
 
         footer p {
             margin: 5px 0; /* Espaçamento entre os parágrafos */
-            font-size: 10px; /* Tamanho da fonte preservado */
+            font-size: 12px; /* Tamanho da fonte preservado */
             color: white; /* Cor do texto alterada para branco */
             font-weight: bold; /* Adiciona negrito ao texto */
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Sombra branca para maior contraste */
@@ -159,11 +164,11 @@
         <nav>
             <ul class="menu">
                 <li><a href="inicio.html">Início</a></li>
-                <li><a href="nossa-loja.html">Nossa Loja</a></li>
+                <li><a href="maconaria.html">Maçonaria</a></li>
                 <li><a href="galeria-de-grao-mestres.html">Galeria de Grão Mestres</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="contato.html">Contato</a></li>
                 <li><a href="#">Calendário de Eventos</a></li>
-                <li><a href="#">Área Restrita</a></li>
+                <li><a href="Intranet.html">Intranet</a></li>
                 <li><a href="#">Fale Conosco</a></li>
             </ul>
         </nav>
