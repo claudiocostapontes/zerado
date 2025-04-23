@@ -19,7 +19,7 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         label {
@@ -35,7 +35,7 @@
             width: 100%;
             padding: 12px;
             margin: 6px 0 16px;
-            border: 0.5px solid #000;
+            border: 1px solid #000; /*aumenta a largura da borda de preenchimento*/
             border-radius: 4px;
             resize: vertical;
         }
@@ -56,8 +56,8 @@
         .row {
             display: flex;
             align-items: center; /* Alinha verticalmente os itens */
-            gap: 8px; /* Aumenta o espaço entre os elementos */
-            margin-bottom: 16px;
+            gap: 20px; /* Aumenta o espaço entre os elementos */
+            margin-bottom: 15px;
         }
 
         .row > h2 {
@@ -72,13 +72,13 @@
         }
 
         .img-container {
-            width: 30px; /* Tamanho ajustado para a imagem */
+            width: 55px; /* Tamanho ajustado para a imagem */
             height: auto; /* Mantém a proporção */
             display: block; /* Remove float para melhor controle no flex */
         }
 
         .img-container img {
-            width: 100%; /* Garante que a imagem ocupe a largura do contêiner */
+            width: 150%; /* Garante que a imagem ocupe a largura do contêiner */
             height: auto; /* Mantém a proporção */
             vertical-align: middle; /* Alinha a imagem com o texto */
         }
@@ -86,7 +86,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Fale Conosco</h1>
+        <h1>Entre em Contato</h1>
         <div class="row">
             <h2>Destinatário</h2>
             <h2>Guardiões do Templo</h2>
@@ -95,16 +95,16 @@
             </div>
         </div>
         <form action="/submit" method="post">
-            <label for="nome">Nome</label>
+            <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
 
-            <label for="email">E-mail</label>
+            <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
 
-            <label for="telefone">Telefone</label>
+            <label for="telefone">Telefone:</label>
             <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required>
 
-            <label for="mensagem">Mensagem</label>
+            <label for="mensagem">Mensagem:</label>
             <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem" style="height: 150px" required></textarea>
 
             <input type="hidden" id="latitude" name="latitude">
@@ -138,7 +138,7 @@
             }
         }
 
-        // Solicita a localização quando a página carrega
+        //Solicita a localização quando a página carrega
         window.onload = getLocation;
     </script>
 </body>
