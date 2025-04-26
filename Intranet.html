@@ -4,236 +4,257 @@
     <meta charset="UTF-8">
     <title>Intranet</title>
     <style>
-        /* Set default styles for the body to ensure consistent layout and background */
         body {
-            font-family: sans-serif; /* Use a clean, readable font */
-            margin: 20px; /* Add margin around the body for spacing */
-            padding: 20px; /* Add padding inside the body for content spacing */
-            background-image: url('assets/templogrego.jpg'); /* Set background image */
-            background-size: cover; /* Scale image to cover entire body */
-            background-position: center; /* Center the background image */
-            background-repeat: no-repeat; /* Prevent image from repeating */
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex; /* Use flexbox for layout control */
-            flex-direction: column; /* Stack children vertically */
+            font-family: sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-image: url('assets/templogrego.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Style the main heading */
         h1 {
-            text-align: center; /* Center the text */
-            margin-bottom: 100px; /* Add large bottom margin for spacing */
-            background-color: transparent; /* Ensure no background color */
-            padding: 10px; /* Add padding for better appearance */
-            color: black; /* Set text color to black for visibility */
+            text-align: center;
+            margin-bottom: 100px;
+            background-color: transparent;
+            padding: 10px;
+            color: black;
         }
 
-        /* Style the header containing navigation */
         .main-header {
-            display: flex; /* Use flexbox for layout */
-            justify-content: space-between; /* Space out children evenly */
-            align-items: center; /* Vertically center children */
-            background-color: transparent; /* No background color */
-            border: none; /* Remove any border */
-            padding: 10px 20px; /* Add padding for spacing */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            background-position: left;
         }
 
-        /* Style the header title */
         .main-header h2 {
-            margin: 0; /* Remove default margin */
-            cursor: pointer; /* Indicate clickable element */
-            color: black; /* Set text color to black */
-            font-size: 24px; /* Set larger font size */
+            margin: 0;
+            cursor: pointer;
+            color: black;
+            font-size: 24px;
         }
 
-        /* Style the navigation menu list */
+        nav {
+            width: 100%; /* Garante que o nav ocupe todo o espaço disponível */
+        }
+
         nav ul {
-            list-style: none; /* Remove default bullet points */
-            padding: 0; /* Remove default padding */
-            margin: 0; /* Remove default margin */
-            display: flex; /* Display items in a row */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end; /* Alinha os itens à direita */
+            width: 100%; /* Garante que o ul ocupe todo o espaço do nav */
         }
 
-        /* Style navigation links */
+        .nav ul li a {
+            margin-right: 950px; /* Espaçamento entre os itens instruções e arquivos */
+        }
+
         nav ul li a {
-            text-decoration: none; /* Remove underline from links */
-            color: black; /* Set text color to black */
-            padding: 8px 12px; /* Add padding for clickable area */
-            border-radius: 5px; /* Round corners for visual appeal */
-            font-size: 16px; /* Set font size for readability */
-            cursor: pointer; /* Indicate clickable element */
+            margin-right: 500px; /* Ajusta as letras do nav da esquerda para direita*/
+            text-decoration: none;
+            color: black;
+            padding: 12px 12px;
+            border-radius: 4px;
+            font-weight: bold;
         }
 
-        /* Add hover effect for navigation links */
-        nav ul li a:hover {
-            background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
+        .dropdown-toggle {
+            display: block;
+            padding: 8px 12px;
+            background-color: transparent;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold; /* Letras em negrito */
+            font-size: 16px;
         }
 
-        /* Style the footer */
+        .dropdown-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            margin-right: auto; /* Remove a margem do primeiro item */
+        }
+
+        .dropdown-content {
+            display: none;
+            padding-right: 20px;
+            background-color: transparent; /* Retiram as cores dos arquivos de cascata*/
+            border-right: 2px solid transparent; /* Retiram as cores dos arquivos de cascata*/
+            position: relative; /* Para o conteúdo cascata não deslocar o layout */
+            font-weight: bold; /* Letras em negrito */
+            z-index: 10;
+        }
+
+        .dropdown-content.active {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 5px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            text-decoration: underline;
+        }
+
         footer {
-            background-color: transparent; /* No background color */
-            padding: 10px 20px; /* Add padding for spacing */
-            text-align: center; /* Center text */
-            border: none; /* Remove any border */
-            margin-top: auto; /* Push footer to bottom of flex container */
+            background-color: transparent;
+            padding: 10px 20px;
+            text-align: center;
+            border: none;
+            margin-top: auto;
         }
 
-        /* Style footer paragraphs */
         footer p {
-            margin: 5px 0; /* Add small vertical margin */
-            font-size: 13px; /* Set smaller font size */
-            color: black; /* Set text color to black */
-            font-weight: bold; /* Make text bold */
+            margin: 5px 0;
+            font-size: 13px;
+            color: black;
+            font-weight: bold;
         }
 
-        /* Style footer links */
         footer a {
-            text-decoration: none; /* Remove underline */
-            color: black; /* Set text color to black */
-            font-weight: bold; /* Make text bold */
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
         }
 
-        /* Add hover effect for footer links */
         footer a:hover {
-            color: black; /* Maintain color on hover */
-            text-decoration: underline; /* Add underline on hover */
+            color: black;
+            text-decoration: underline;
         }
 
-        /* Style the login overlay */
         .intranet-container {
-            display: none; /* Hide by default */
-            position: fixed; /* Fix position over viewport */
-            top: 0; /* Align to top */
-            left: 0; /* Align to left */
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
-            z-index: 1000; /* Ensure it appears above other content */
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
 
-        /* Style the login box */
         .login-box {
-            background: white; /* White background for contrast */
-            padding: 50px; /* Generous padding for spacing / tamanho da caixa de login */
-            border-radius: 10px; /* Round corners */
-            width: 400px; /* Fixed width */
-            text-align: center; /* Center text */
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
         }
 
-        /* Style input fields in login box */
         .login-box input {
-            width: 100%; /* Full width of container */
-            padding: 10px; /* Add padding for comfort */
-            margin: 10px 0; /* Vertical margin for spacing */
-            border: 1px solid black; /* Black border */
-            border-radius: 5px; /* Round corners */
-            box-sizing: border-box; /* Include padding in width */
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
 
-        /* Style links in login box */
         .login-box a {
-            color: blue; /* Blue text for visibility */
-            text-decoration: underline; /* Underline for link appearance */
-            display: block; /* Make link a block element */
-            margin: 15px 0; /* Vertical margin for spacing */
+            color: blue;
+            text-decoration: underline;
+            display: block;
+            margin: 15px 0;
         }
 
-        /* Style login button */
         .login-box button {
-            width: 100%; /* Full width */
-            padding: 10px; /* Add padding */
-            background: green; /* Green background */
-            color: white; /* White text */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Round corners */
-            cursor: pointer; /* Indicate clickable */
+            width: 100%;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        /* Add hover effect for login button */
         .login-box button:hover {
-            background: darkgreen; /* Darker green on hover */
+            background: darkgreen;
         }
 
-        /* Style error messages */
         .error-message {
-            color: red; /* Red text for errors */
-            margin: 10px 0; /* Vertical margin */
+            color: red;
+            margin: 10px 0;
         }
 
-        /* Style the dashboard container */
         .dashboard-container {
-            display: none; /* Hide by default */
-            flex: 1; /* Take available space */
-            flex-direction: column; /* Stack children vertically */
-            min-height: 100vh; /* Full viewport height */
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Style the dashboard content area */
         .dashboard-content {
-            background: white; /* White background */
-            padding: 0px; /* Add padding / Retira a Borda do Conteúdo */ 
-            border-radius: 10px; /* Round corners */
-            width: 80%; /* 80% of parent width */
-            max-width: 800px; /* Cap maximum width */
-            margin: 20px auto; /* Center with margin */
-            text-align: center; /* Center text */
+            background: white;
+            padding: 0px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
         }
 
-        /* Style the members table */
         .members-table {
-            display: none; /* Hide by default */
-            width: 100%; /* Full width */
-            border-collapse: collapse; /* Merge borders */
-            margin-top: 2000px; /* Space above table */
+            display: none;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Ajustado para evitar margem excessiva */
         }
 
-        /* Style table cells */
         .members-table th, .members-table td {
-            border: 1px solid black; /* Black border */
-            padding: 8px; /* Add padding */
-            text-align: left; /* Align text left */
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
         }
 
-        /* Style table headers */
         .members-table th {
-            background-color: white; /* White background */
-            color: black; /* Black text */
+            background-color: white;
+            color: black;
         }
 
-        /* Style the password input container */
         .password-container {
-            position: relative; /* Position children relatively */
-            width: 100%; /* Full width */
+            position: relative;
+            width: 100%;
         }
 
-        /* Adjust password input to accommodate eye icon */
         .password-container input {
-            padding-right: 40px; /* Space for eye icon */
+            padding-right: 40px;
         }
 
-        /* Style the password toggle icon */
         .toggle-password {
-            position: absolute; /* Position over input */
-            right: 10px; /* Align to right */
-            top: 50%; /* Center vertically */
-            transform: translateY(-50%); /* Adjust vertical alignment */
-            cursor: pointer; /* Indicate clickable */
-            font-size: 18px; /* Set icon size */
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
         }
 
-        /* Style the remember-me checkbox container */
         .remember-me {
-            display: flex; /* Use flexbox */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            margin: 10px 0; /* Vertical margin */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
         }
 
-        /* Style the remember-me checkbox */
         .remember-me input {
-            width: auto; /* Default checkbox size */
-            margin-right: 5px; /* Space before label */
+            width: auto;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -261,8 +282,20 @@
             <h3 onclick="toggleMembers()"></h3>
             <nav>
                 <ul class="menu">
-                    <li><a href="membros-da-loja.html">Membros da Loja</a></li>
-                    <li><a href="instrucoes-de-aprendiz.html">Instruções Gerais</a></li>
+                    <li>
+                        <a href="instrucoes-de-aprendiz.html" class="dropdown-toggle">Instruções Gerais</a>
+                        <div class="dropdown-content">
+                            <a href="#">Detalhe 1</a>
+                            <a href="#">Detalhe 2</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="assets/arquivo.pdf" class="dropdown-toggle">Arquivo PDF</a>
+                        <div class="dropdown-content">
+                            <a href="#">Informação Adicional</a>
+                            <a href="#">Outro Link</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -291,13 +324,11 @@
         </footer>
     </div>
     <script>
-        // Hardcoded users for authentication
         const users = [
             { email: "user@example.com", password: "password123" },
             { email: "admin@maconaria.com", password: "admin456" }
         ];
 
-        // Hardcoded member data
         const members = [
             { name: "João Silva Santos", cim: "123456", initiationDate: "15/03/2010", rite: "Escocês" },
             { name: "Maria Oliveira Costa", cim: "789012", initiationDate: "22/07/2015", rite: "York" },
@@ -391,8 +422,16 @@
             }
         }
 
-        // Show login screen on page load
         showLogin();
+
+        const toggles = document.querySelectorAll('.dropdown-toggle');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const content = this.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
