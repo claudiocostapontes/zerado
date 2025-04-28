@@ -2,97 +2,78 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet</title>
     <style>
+       
         body {
             font-family: sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-image: url('assets/templogrego.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-image: url('assets/coluna.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        h1 {
+        header {
+            background-color: transparent; /* cabeçalho transparente */
+            padding: 40px;
             text-align: center;
-            margin-bottom: 100px;
-            background-color: transparent;
-            padding: 10px;
-            color: black;
         }
 
-        .main-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: transparent;
-            border: none;
-            padding: 10px 20px;
-            background-position: left;
-        }
-
-        .main-header h2 {
+        header h1 {
             margin: 0;
-            cursor: pointer;
             color: black;
-            font-size: 24px;
         }
 
-        nav {
-            width: 100%; /* Garante que o nav ocupe todo o espaço disponível */
+        main {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
         }
 
-        nav ul {
+        .section1, .section2 {
+            background-color: transparent; /* section transparente */
+            padding: 40px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .aside-left {
+            background-color: transparent; /* menu lateral a esquerda transparente */
+            padding: 20px;
+            width: 200px;
+            text-align: left;
+            order: -1; /* Posiciona o aside à esquerda */
+        }
+
+        .aside-left nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: flex-end; /* Alinha os itens à direita */
-            width: 100%; /* Garante que o ul ocupe todo o espaço do nav */
         }
 
-        .nav ul li a {
-            margin-right: 950px; /* Espaçamento entre os itens instruções e arquivos */
+        .aside-left nav ul li {
+            margin-bottom: 10px;
         }
 
-        nav ul li a {
-            margin-right: 500px; /* Ajusta as letras do nav da esquerda para direita*/
+        .aside-left nav a {
             text-decoration: none;
             color: black;
-            padding: 12px 12px;
-            border-radius: 4px;
             font-weight: bold;
-        }
-
-        .dropdown-toggle {
             display: block;
-            padding: 8px 12px;
-            background-color: transparent;
-            text-decoration: none;
-            color: #333;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold; /* Letras em negrito */
-            font-size: 16px;
+            padding: 5px;
         }
 
-        .dropdown-toggle:hover {
+        .aside-left nav a:hover {
             background-color: rgba(0, 0, 0, 0.1);
-            margin-right: auto; /* Remove a margem do primeiro item */
         }
 
         .dropdown-content {
             display: none;
-            padding-right: 20px;
-            background-color: transparent; /* Retiram as cores dos arquivos de cascata*/
-            border-right: 2px solid transparent; /* Retiram as cores dos arquivos de cascata*/
-            position: relative; /* Para o conteúdo cascata não deslocar o layout */
-            font-weight: bold; /* Letras em negrito */
-            z-index: 10;
+            padding-left: 15px;
         }
 
         .dropdown-content.active {
@@ -100,22 +81,29 @@
         }
 
         .dropdown-content a {
-            display: block;
-            padding: 5px;
-            color: #0066cc;
-            text-decoration: none;
+            color: red;
+            font-weight: normal;
         }
 
         .dropdown-content a:hover {
             text-decoration: underline;
         }
 
-        footer {
-            background-color: transparent;
-            padding: 10px 20px;
+        aside {
+            background-color: transparent; /* menu lateral transparente */
+            padding: 20px;
+            width: 200px;
             text-align: center;
-            border: none;
-            margin-top: auto;
+            font-size: 17px;
+            order: 1; /* Posiciona o aside à direita */
+            line-height: 2;
+            
+        }
+
+        footer {
+            background-color: transparent; /* rodapé transparente */
+            padding: 20px;
+            text-align: center;
         }
 
         footer p {
@@ -199,21 +187,11 @@
             min-height: 100vh;
         }
 
-        .dashboard-content {
-            background: white;
-            padding: 0px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
         .members-table {
             display: none;
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px; /* Ajustado para evitar margem excessiva */
+            margin-top: 20px;
         }
 
         .members-table th, .members-table td {
@@ -278,44 +256,67 @@
         </div>
     </div>
     <div class="dashboard-container" id="dashboardContainer">
-        <header class="main-header">
-            <h3 onclick="toggleMembers()"></h3>
-            <nav>
-                <ul class="menu">
-                    <li>
-                        <a href="instrucoes-de-aprendiz.html" class="dropdown-toggle">Instruções Gerais</a>
-                        <div class="dropdown-content">
-                            <a href="#">Detalhe 1</a>
-                            <a href="#">Detalhe 2</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="assets/arquivo.pdf" class="dropdown-toggle">Arquivo PDF</a>
-                        <div class="dropdown-content">
-                            <a href="#">Informação Adicional</a>
-                            <a href="#">Outro Link</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+        <header>
+            <h1>Intranet</h1>
         </header>
-        <h1>Guardiões do Templo Nº 3544</h1>
         <main>
-            <div class="dashboard-content">
-                <table class="members-table" id="membersTable">
-                    <thead>
-                        <tr>
-                            <th>Nome Completo</th>
-                            <th>CIM</th>
-                            <th>Data de Iniciação</th>
-                            <th>Rito</th>
-                        </tr>
-                    </thead>
-                    <tbody id="membersTableBody">
-                        <!-- Member data populated by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
+            <aside class="aside-left">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="inicio.html" class="dropdown-toggle">Início</a>
+                            <div class="dropdown-content">
+                                <a href="#">Subitem 1</a>
+                                <a href="#">Subitem 2</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="comunicados.html" class="dropdown-toggle">Comunicados</a>
+                            <div class="dropdown-content">
+                                <a href="#">História</a>
+                                <a href="#">Princípios</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="galeria-dos-veneraveis.html" class="dropdown-toggle">Galeria dos Veneráveis</a>
+                            <div class="dropdown-content">
+                                <a href="#">Mestre 1</a>
+                                <a href="#">Mestre 2</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="constituicao-gob.html" class="dropdown-toggle">Constituiçao do GOB</a>
+                            <div class="dropdown-content">
+                                <a href="formulario.html" class="dropdown-toggle">Formulário</a>
+                                <a href="email.html" class="dropdown-toggle">E-mail</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="membros-da-loja.html" class="dropdown-toggle">Membros da Loja</a>
+                            <div class="dropdown-content">
+                                <a href="#">Evento 1</a>
+                                <a href="#">Evento 2</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="regimento-interno.html" class="dropdown-toggle">Regimento Interno</a>
+                            <div class="dropdown-content">
+                                <a href="#">Arquivo.pdf1</a>
+                                <a href="#">Arquivo.pdf2</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <section class="section1">
+                
+            </section>
+            <section class="section2">
+                <!-- Placeholder para SECTION 2 -->
+            </section>
+            <aside>
+                <!-- Placeholder para ASIDE direito -->
+            </aside>
         </main>
         <footer>
             <p>Loja Maçonica Guardiões do Templo Nº 3544</p>
@@ -327,13 +328,6 @@
         const users = [
             { email: "user@example.com", password: "password123" },
             { email: "admin@maconaria.com", password: "admin456" }
-        ];
-
-        const members = [
-            { name: "João Silva Santos", cim: "123456", initiationDate: "15/03/2010", rite: "Escocês" },
-            { name: "Maria Oliveira Costa", cim: "789012", initiationDate: "22/07/2015", rite: "York" },
-            { name: "Pedro Almeida Souza", cim: "345678", initiationDate: "10/11/2005", rite: "Escocês" },
-            { name: "Ana Pereira Lima", cim: "901234", initiationDate: "05/04/2018", rite: "Moderno" }
         ];
 
         function showLogin() {
