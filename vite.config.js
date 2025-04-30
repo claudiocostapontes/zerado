@@ -11,7 +11,7 @@ export default defineConfig({
     sourcemap: true, // Gera sourcemaps para debugging em produção (recomendado)
   },
   server: {
-    port: 3000, // Porta do servidor de desenvolvimento (opcional, padrão é 5173)
+    port: 3001, // Porta do servidor de desenvolvimento (opcional, padrão é 5173)
     open: true, // Abre o navegador automaticamente ao iniciar (recomendado)
   },
 });
