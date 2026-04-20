@@ -10,9 +10,14 @@ import java.util.Optional;
 public interface MembroRepository extends JpaRepository<Membro, Long> {
 
     Optional<Membro> findByCpf(String cpf);
+
     Optional<Membro> findByCim(String cim);
-    List<Membro> findByNomeCompletoContainingIgnoreCase(String nome);
+
+    List<Membro> findByNomeCompletoContainingIgnoreCase(String nomeCompleto);
+
     List<Membro> findBySituacaoMacom(String situacaoMacom);
+
     Optional<Membro> findByEmailPrincipal(String emailPrincipal);
-    List<Membro> findByOrganizacaoTrabalhoContainingIgnoreCase(String organizacao);
+
+    List<Membro> findByOrganizacaoTrabalhoContainingIgnoreCase(String organizacaoTrabalho);
 }
