@@ -323,7 +323,7 @@
                             <div class="dropdown">
                                 <a href="constituicao-gob.html" class="dropdown-toggle">Constituição do GOB</a>
                                 <div class="dropdown-content">
-                                    <a href="assets/onedrive/Constituição do GOB.pdf" target="_blank">Constituição do GOB</a>
+                                    <a href="assets/onedrive/Constituição do GOB.pdf" target="_blank">GOB</a>
                                 </div>
                             </div>
                         </li>
@@ -333,8 +333,8 @@
                         <li>
                             <a href="regimento-interno.html" class="dropdown-toggle">Regimento Interno</a>
                             <div class="dropdown-content">
-                                <a href="assets/onedrive/Regimento Interno da Loja.pdf">Arquivo.pdf1</a>
-                                <a href="#">Arquivo.pdf2</a>
+                                <a href="assets/onedrive/Regimento Interno da Loja.pdf">Loja</a>
+                                <a href="#">Arquivo</a>
                             </div>
                         </li>
                     </ul>
@@ -349,27 +349,83 @@
             <p>QE 40 Área Especial Nº 6 Lote 01 Guará II</p>
             <p>CNPJ: 19.246.642/0001-01</p>
         </footer>
-    </div>
+    </div>    
 
-    <div id="meuModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="fecharModal()">&times;</span>
-            <h2 style="color: #2c3e50;">Consulta de Membros da Loja</h2>
-            <hr>
-            <table class="tabela-membros">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome Completo</th>
-                        <th>CIM</th>
-                        <th>CPF</th>
-                    </tr>
-                </thead>
-                <tbody id="corpo-tabela" style="color: #333;">
-                    </tbody>
-            </table>
+<div id="meuModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal()">&times;</span>
+        
+        <h2 style="color: #2c3e50;">Consulta de Membros da Loja</h2>
+        
+        <div style="margin-top: 15px; margin-bottom: 15px; text-align: right;">
+            <label for="uploadExcel" style="background-color: #2c3e50; color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">
+                📄 Importar Planilha do Excel
+            </label>
+            <input type="file" id="uploadExcel" accept=".xlsx, .xls" style="display: none;" />
         </div>
+        
+        <hr>
+        
+        <table class="tabela-membros">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Obreiros</th>
+                    <th>CPF</th>
+                    <th>Contato</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela" style="color: #333;">
+            </tbody>
+        </table>
     </div>
+</div>
+
+<div style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; max-width: 400px;">
+    <h3 style="color: #2c3e50; margin-top: 0;">Importar Planilha de Obreiros</h3>
+    <input type="file" id="uploadExcel" accept=".xlsx, .xls" />
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+document.getElementById('uploadExcel').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, {type: 'array'});
+        
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        
+        const membros = XLSX.utils.sheet_to_json(worksheet);
+        const tbody = document.getElementById('corpo-tabela');
+        
+        // Limpa a tabela antes de popular
+        tbody.innerHTML = ''; 
+
+        membros.forEach(membro => {
+            const tr = document.createElement('tr');
+            
+            // Certifique-se de que as chaves abaixo (ID, Nome Completo, CIM, CPF)
+            // sejam idênticas aos cabeçalhos da primeira linha do seu arquivo Excel.
+            tr.innerHTML = `
+                <td>${membro.ID || ''}</td>
+                <td>${membro['Nome Completo'] || membro.Nome || ''}</td>
+                <td>${membro.CIM || ''}</td>
+                <td>${membro.CPF || ''}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    };
+    
+    reader.readAsArrayBuffer(file);
+});
+</script>
+
 
     <script>
         // MOCK DE LOGIN
@@ -500,4 +556,7 @@
         showLogin();
     </script>
 </body>
+<script src="/js/membros.js"></script>
+
+<script src="/js/membros.js?v=2"></script>
 </html>
