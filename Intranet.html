@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intranet</title>
     <style>
-       
         body {
             font-family: sans-serif;
             min-height: 100vh;
@@ -15,10 +14,11 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin: 0;
         }
 
         header {
-            background-color: transparent; /* cabeçalho transparente */
+            background-color: transparent;
             padding: 40px;
             text-align: center;
         }
@@ -36,18 +36,18 @@
         }
 
         .section1, .section2 {
-            background-color: transparent; /* section transparente */
+            background-color: transparent;
             padding: 40px;
             text-align: center;
             flex: 1;
         }
 
         .aside-left {
-            background-color: transparent; /* menu lateral a esquerda transparente */
+            background-color: transparent;
             padding: 20px;
             width: 200px;
             text-align: left;
-            order: -1; /* Posiciona o aside à esquerda */
+            order: -1;
         }
 
         .aside-left nav ul {
@@ -90,18 +90,17 @@
         }
 
         aside {
-            background-color: transparent; /* menu lateral transparente */
+            background-color: transparent;
             padding: 20px;
             width: 200px;
             text-align: center;
             font-size: 17px;
-            order: 1; /* Posiciona o aside à direita */
+            order: 1;
             line-height: 2;
-            
         }
 
         footer {
-            background-color: transparent; /* rodapé transparente */
+            background-color: transparent;
             padding: 20px;
             text-align: center;
         }
@@ -187,24 +186,6 @@
             min-height: 100vh;
         }
 
-        .members-table {
-            display: none;
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .members-table th, .members-table td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .members-table th {
-            background-color: white;
-            color: black;
-        }
-
         .password-container {
             position: relative;
             width: 100%;
@@ -234,6 +215,59 @@
             width: auto;
             margin-right: 5px;
         }
+
+        /* ESTILOS DO MODAL (POP-UP) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 9999; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: #fefefe; 
+            margin: 5% auto; 
+            padding: 20px; 
+            border: 1px solid #888; 
+            width: 80%; 
+            max-height: 80vh; 
+            overflow-y: auto; 
+            border-radius: 8px;
+        }
+
+        .close-btn {
+            color: #aaa; 
+            float: right; 
+            font-size: 28px; 
+            font-weight: bold; 
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: black;
+        }
+
+        .tabela-membros {
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px;
+        }
+
+        .tabela-membros th, .tabela-membros td {
+            border: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: left;
+        }
+
+        .tabela-membros th {
+            background-color: #2c3e50; 
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -255,6 +289,7 @@
             <a href="#" onclick="alert('Registration requires server-side implementation')">Não tem conta? Cadastre-se!</a>
         </div>
     </div>
+
     <div class="dashboard-container" id="dashboardContainer">
         <header>
             <h1>Intranet</h1>
@@ -278,55 +313,122 @@
                             </div>
                         </li>
                         <li>
-                            <a href="galeria-dos-veneraveis.html" class="dropdown-toggle">Galeria dos Veneráveis</a>
+                            <a href="balancetes.html" class="dropdown-toggle">Balancetes</a>
                             <div class="dropdown-content">
                                 <a href="#">Mestre 1</a>
                                 <a href="#">Mestre 2</a>
                             </div>
                         </li>
                         <li>
-                            <!--<a href="constituicao-gob.html" class="dropdown-toggle">Constituição do GOB</a>-->
                             <div class="dropdown">
                                 <a href="constituicao-gob.html" class="dropdown-toggle">Constituição do GOB</a>
                                 <div class="dropdown-content">
-                                    <a href="assets/onedrive/Constituição do GOB.pdf" target="_blank">Constituição do GOB</a>
+                                    <a href="assets/onedrive/Constituição do GOB.pdf" target="_blank">GOB</a>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="membros-da-loja.html" class="dropdown-toggle">Membros da Loja</a>
-                            <div class="dropdown-content">
-                                <a href="#">Evento 1</a>
-                                <a href="#">Evento 2</a>
-                            </div>
+                            <a href="javascript:void(0)" onclick="abrirModal()">Membros da Loja</a>
                         </li>
                         <li>
                             <a href="regimento-interno.html" class="dropdown-toggle">Regimento Interno</a>
                             <div class="dropdown-content">
-                                <a href="#">Arquivo.pdf1</a>
-                                <a href="#">Arquivo.pdf2</a>
+                                <a href="assets/onedrive/Regimento Interno da Loja.pdf">Loja</a>
+                                <a href="#">Arquivo</a>
                             </div>
                         </li>
                     </ul>
                 </nav>
             </aside>
-            <section class="section1">
-                
-            </section>
-            <section class="section2">
-                <!-- Placeholder para SECTION 2 -->
-            </section>
-            <aside>
-                <!-- Placeholder para ASIDE direito -->
-            </aside>
+            <section class="section1"></section>
+            <section class="section2"></section>
+            <aside></aside>
         </main>
         <footer>
             <p>Loja Maçonica Guardiões do Templo Nº 3544</p>
             <p>QE 40 Área Especial Nº 6 Lote 01 Guará II</p>
             <p>CNPJ: 19.246.642/0001-01</p>
         </footer>
+    </div>    
+
+<div id="meuModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal()">&times;</span>
+        
+        <h2 style="color: #2c3e50;">Consulta de Membros da Loja</h2>
+        
+        <div style="margin-top: 15px; margin-bottom: 15px; text-align: right;">
+            <label for="uploadExcel" style="background-color: #2c3e50; color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">
+                📄 Importar Planilha do Excel
+            </label>
+            <input type="file" id="uploadExcel" accept=".xlsx, .xls" style="display: none;" />
+        </div>
+        
+        <hr>
+        
+        <table class="tabela-membros">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Obreiros</th>
+                    <th>CPF</th>
+                    <th>Contato</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela" style="color: #333;">
+            </tbody>
+        </table>
     </div>
+</div>
+
+<div style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; max-width: 400px;">
+    <h3 style="color: #2c3e50; margin-top: 0;">Importar Planilha de Obreiros</h3>
+    <input type="file" id="uploadExcel" accept=".xlsx, .xls" />
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+document.getElementById('uploadExcel').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, {type: 'array'});
+        
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        
+        const membros = XLSX.utils.sheet_to_json(worksheet);
+        const tbody = document.getElementById('corpo-tabela');
+        
+        // Limpa a tabela antes de popular
+        tbody.innerHTML = ''; 
+
+        membros.forEach(membro => {
+            const tr = document.createElement('tr');
+            
+            // Certifique-se de que as chaves abaixo (ID, Nome Completo, CIM, CPF)
+            // sejam idênticas aos cabeçalhos da primeira linha do seu arquivo Excel.
+            tr.innerHTML = `
+                <td>${membro.ID || ''}</td>
+                <td>${membro['Nome Completo'] || membro.Nome || ''}</td>
+                <td>${membro.CIM || ''}</td>
+                <td>${membro.CPF || ''}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    };
+    
+    reader.readAsArrayBuffer(file);
+});
+</script>
+
+
     <script>
+        // MOCK DE LOGIN
         const users = [
             { email: "user@example.com", password: "password123" },
             { email: "admin@maconaria.com", password: "admin456" }
@@ -337,8 +439,10 @@
             document.getElementById('loginBox').style.display = 'block';
             document.getElementById('dashboardContainer').style.display = 'none';
             document.getElementById('loginError').style.display = 'none';
+            
             const savedEmail = localStorage.getItem('savedEmail');
             const savedPassword = localStorage.getItem('savedPassword');
+            
             if (savedEmail && savedPassword) {
                 document.getElementById('loginEmail').value = savedEmail;
                 document.getElementById('loginPassword').value = savedPassword;
@@ -349,8 +453,6 @@
         function showDashboard() {
             document.getElementById('intranetContainer').style.display = 'none';
             document.getElementById('dashboardContainer').style.display = 'flex';
-            document.getElementById('membersTable').style.display = 'none';
-            populateMembersTable();
         }
 
         function handleLogin() {
@@ -386,26 +488,6 @@
             showLogin();
         }
 
-        function populateMembersTable() {
-            const tbody = document.getElementById('membersTableBody');
-            tbody.innerHTML = '';
-            members.forEach(member => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${member.name}</td>
-                    <td>${member.cim}</td>
-                    <td>${member.initiationDate}</td>
-                    <td>${member.rite}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        function toggleMembers() {
-            const table = document.getElementById('membersTable');
-            table.style.display = table.style.display === 'none' ? 'table' : 'none';
-        }
-
         function togglePassword() {
             const passwordInput = document.getElementById('loginPassword');
             const toggleIcon = document.querySelector('.toggle-password');
@@ -418,16 +500,63 @@
             }
         }
 
-        showLogin();
-
+        // LÓGICA DO MENU DROPDOWN
         const toggles = document.querySelectorAll('.dropdown-toggle');
         toggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 const content = this.nextElementSibling;
-                content.classList.toggle('active');
+                if(content) content.classList.toggle('active');
             });
         });
+
+        // LÓGICA DO MODAL E CONEXÃO COM JAVA
+        function abrirModal() {
+            document.getElementById('meuModal').style.display = "block";
+            carregarMembros();
+        }
+
+        function fecharModal() {
+            document.getElementById('meuModal').style.display = "none";
+        }
+
+        function carregarMembros() {
+            const corpoTabela = document.getElementById('corpo-tabela');
+            corpoTabela.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:20px;">Carregando dados do servidor...</td></tr>';
+
+            fetch('http://localhost:8080/membros')
+                .then(response => response.json())
+                .then(membros => {
+                    corpoTabela.innerHTML = ''; 
+                    membros.forEach(m => {
+                        corpoTabela.innerHTML += `
+                            <tr>
+                                <td style="text-align: center;">${m.id}</td>
+                                <td>${m.nomeCompleto}</td>
+                                <td style="text-align: center;">${m.cim}</td>
+                                <td style="text-align: center;">${m.cpf}</td>
+                            </tr>`;
+                    });
+                })
+                .catch(err => {
+                    console.error("Erro:", err);
+                    corpoTabela.innerHTML = '<tr><td colspan="4" style="color:red; text-align:center; padding:20px;">Erro ao conectar com o servidor Java. Verifique se o Spring Boot está rodando.</td></tr>';
+                });
+        }
+
+        // FECHA O MODAL AO CLICAR FORA DA CAIXA
+        window.onclick = function(event) {
+            let modal = document.getElementById('meuModal');
+            if (event.target == modal) {
+                fecharModal();
+            }
+        }
+
+        // INICIA MOSTRANDO O LOGIN
+        showLogin();
     </script>
 </body>
+<script src="/js/membros.js"></script>
+
+<script src="/js/membros.js?v=2"></script>
 </html>
