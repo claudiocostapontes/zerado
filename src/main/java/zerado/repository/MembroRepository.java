@@ -1,23 +1,10 @@
-package zerado.repository;
+package zerado.repository; // Ajuste o pacote conforme o seu projeto
 
-import zerado.model.Membro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.List;
-import java.util.Optional;
+import zerado.model.Membro; // Importe a classe Membro que criamos acima
 
 @Repository
 public interface MembroRepository extends JpaRepository<Membro, Long> {
-
-    Optional<Membro> findByCpf(String cpf);
-
-    Optional<Membro> findByCim(String cim);
-
-    List<Membro> findByNomeCompletoContainingIgnoreCase(String nomeCompleto);
-
-    List<Membro> findBySituacaoMacom(String situacaoMacom);
-
-    Optional<Membro> findByEmailPrincipal(String emailPrincipal);
-
-    List<Membro> findByOrganizacaoTrabalhoContainingIgnoreCase(String organizacaoTrabalho);
+    // Só isso! O Spring Boot já sabe como fazer o saveAll() e findAll() automaticamente.
 }
