@@ -60,7 +60,7 @@ import { CommonModule } from '@angular/common';
 
                   <div class="botoes-header">
                       <button *ngIf="telaAtual !== 'intranet'" (click)="telaAtual = 'intranet'" class="btn-voltar">Voltar ao Menu</button>
-                      <button (click)="fazerLogout()" class="btn-sair">Sair do Sistema</button>
+                      <button (click)="fazerLogout()" class="btn-sair">Voltar</button>
                   </div>
 
               </header>
@@ -72,31 +72,31 @@ import { CommonModule } from '@angular/common';
                         <div class="grade-funcoes animacao-fade">
                           <div class="card-interno" (click)="telaAtual = 'membros'">
                               <img src="/assets/matrix.jpg" alt="Membros" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Quadro de Membros</h3>
                           </div>
                           <div class="card-interno">
                               <img src="/assets/piramide-card.jpg" alt="Tesouraria" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Tesouraria</h3>
                           </div>
                           <div class="card-interno">
                               <img src="/assets/congresso-card.jpg" alt="Atas" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Atas de Reunião</h3>
                           </div>
                           <div class="card-interno">
                               <img src="/assets/nota-card.jpg" alt="Calendário de Eventos" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Calendário de Graus</h3>
                           </div>
                           <div class="card-interno">
                               <img src="/assets/piramide-verde-card.jpg" alt="GaleriaVeneráveis" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Veneráveis Mestres</h3>
                           </div>
                           <div class="card-interno">
                               <img src="/assets/olho-pedra.jpg" alt="Financeiro" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Balanço Financeiro</h3>
                           </div>
                           <div class="card-interno">
                               <img src="/assets/compasso-biblia.jpg" alt="Documentação" class="icone-imagem">
-                              <h3></h3>
+                              <h3>Documentação Geral</h3>
                           </div>
                       </div>
                   }
@@ -237,39 +237,37 @@ import { CommonModule } from '@angular/common';
 
     /* AMBIENTE RESTRITO (INTRANET) */
     .modo-restrito {
-      /* Substitua 'fundo-intranet.jpg' pelo nome da sua imagem */
       background: url('/assets/squarevintage.jpg') no-repeat center center fixed !important;
       background-size: cover !important;
     }
 
-    .ambiente-restrito
-    { width: 100%;
+    .ambiente-restrito {
+      width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
     }
 
-    /* CABEÇALHO INTERNO - Fundo transparente (sem a faixa azul) */
+    /* CABEÇALHO INTERNO */
     .header-interno {
-      background: transparent !important; /* Transforma a faixa em invisível */
+      background: transparent !important;
       padding: 15px 30px;
       display: flex !important;
       flex-direction: row !important;
       justify-content: space-between !important;
       align-items: center !important;
       color: #fff;
-      border-bottom: none !important; /* Remove a linha de baixo da faixa */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Adiciona uma sombra no texto para ele não sumir na imagem clara */
+      border-bottom: none !important;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     /* CAIXA DOS BOTÕES */
     .botoes-header {
       display: flex;
-      gap: 15px; /* Espaço entre o botão Sair e o Voltar (quando ele aparecer) */
+      gap: 15px;
       align-items: center;
     }
 
-    /* O botão voltar agora precisa empurrar o item que está à esquerda dele */
     .btn-voltar {
       background: #4a69bd; color: #fff; border: none; padding: 8px 15px;
       border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold;
@@ -298,7 +296,7 @@ import { CommonModule } from '@angular/common';
     .grade-funcoes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 15px; /* Reduz o espaço em branco entre um card e outro */
+      gap: 15px;
       margin-top: 30px;
     }
 
@@ -312,7 +310,7 @@ import { CommonModule } from '@angular/common';
 
     .card-interno {
       background: #d6b854;
-      padding: 5px; /* Aqui é onde o card "emagrece" */
+      padding: 5px;
       border-radius: 10px;
       color: #ffffff;
       cursor: pointer;
@@ -326,10 +324,10 @@ import { CommonModule } from '@angular/common';
 
     /* DOMANDO AS IMAGENS JPG/PNG DOS CARDS */
     .icone-imagem {
-      width: 40px;      /* Largura fixa desejada na tela */
-      height: 40px;     /* Altura fixa desejada na tela */
+      width: 40px;
+      height: 40px;
       margin-bottom: 5px;
-      object-fit: contain; /* ESSENCIAL: Mantém as proporções do símbolo sem esticar */
+      object-fit: contain;
     }
 
     .card-interno:hover {
@@ -339,14 +337,9 @@ import { CommonModule } from '@angular/common';
     }
 
     .card-interno h3 {
-      font-size: 12px; /* Tamanho da letra menor */
+      font-size: 12px;
       margin: 0;
       text-align: center;
-    }
-
-    .icone {
-      font-size: 10px;
-      margin-bottom: 8px;
     }
 
     .animacao-fade {
@@ -355,10 +348,47 @@ import { CommonModule } from '@angular/common';
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* ==========================================
+       REGRAS GLOBAIS DE RESPONSIVIDADE (QUALQUER TELA)
+       ========================================== */
+
+    /* 1. TELAS MÉDIAS E TABLETS (Telas até 900px) */
     @media (max-width: 900px) {
         .main-header { flex-direction: column; gap: 15px; }
         .header-espacador, .logo-container { width: auto; }
         nav ul.menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .painel-interno { padding: 20px; }
+        .conteudo-central { padding: 10px; }
+    }
+
+    /* 2. CELULARES PADRÕES E TELAS PEQUENAS (Telas até 600px) */
+    @media (max-width: 600px) {
+        .header-interno {
+            flex-direction: column !important;
+            gap: 15px;
+            text-align: center;
+        }
+        .botoes-header {
+            width: 100%;
+            justify-content: center;
+        }
+        h1 { font-size: 2rem; }
+        .subtitulo { font-size: 1rem; }
+        .caixa-login { padding: 25px; }
+    }
+
+    /* 3. CELULARES ANTIGOS OU MUITO ESTREITOS (Telas até 400px) */
+    @media (max-width: 400px) {
+        .grade-funcoes {
+            grid-template-columns: 1fr;
+        }
+        .botoes-header {
+            flex-direction: column;
+            width: 100%;
+        }
+        .btn-voltar, .btn-sair {
+            width: 100%;
+        }
     }
   `]
 })
@@ -369,7 +399,7 @@ export class AppComponent {
 
   fazerLogin() {
     this.usuarioLogado = true;
-    this.telaAtual = 'intranet'; // Ao logar, joga direto para os cards
+    this.telaAtual = 'intranet';
   }
 
   fazerLogout() {
